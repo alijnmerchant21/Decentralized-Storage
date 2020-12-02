@@ -1,8 +1,8 @@
 pragma solidity ^0.5.0;
 
 contract DStorage {
-  String public name = 'DStorage'; // Name
-  uint public fileCount = '0'; // Number of files
+  string public name = 'DStorage'; // Name
+  uint public fileCount = 0; // Number of files
   mapping (uint => File) public files;  // Mapping fileId=>Struct 
 
   struct File {
@@ -31,7 +31,7 @@ contract DStorage {
   constructor() public {
   }
 
-  function uploadFile(string memory _fileHash, uint memory _fileSize, string memory _fileType, string memory _fileName, string memory _fileDescription) public { 
+  function uploadFile(string memory _fileHash, uint _fileSize, string memory _fileType, string memory _fileName, string memory _fileDescription) public { 
     
     // Make sure the file hash exists
     require(bytes(_fileHash).length > 0);
@@ -58,7 +58,7 @@ contract DStorage {
     files[fileCount] = File(fileCount, _fileHash, _fileSize, _fileType, _fileName, _fileDescription, now, msg.sender);
     
     // Trigger an event
-    emit FileUploaded(fileCount, _fileHash, _fileSize, _fileType, _fileName, _fileDescription, now, msg.sender)
+    emit FileUploaded(fileCount, _fileHash, _fileSize, _fileType, _fileName, _fileDescription, now, msg.sender);
   }
 
 
