@@ -32,7 +32,7 @@ class App extends Component {
     const web3 = window.web3
     // Load account
     const accounts = await web3.eth.getAccounts()
-    this.setState({ account: accounts[1] })
+    this.setState({ account: accounts[0] })
     // Network ID
     const networkId = await web3.eth.net.getId()
     const networkData = DStorage.networks[networkId]
